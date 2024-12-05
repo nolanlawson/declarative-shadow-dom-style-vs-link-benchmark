@@ -9,8 +9,7 @@
   "benchmarks": [
     {
       "browser": {
-        "name": "chrome",
-        "headless": true
+        "name": "safari"
       },
       "measurement": {
         "mode": "performance",
