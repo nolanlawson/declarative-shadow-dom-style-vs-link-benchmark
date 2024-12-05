@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Polymer/tachometer/master/config.schema.json",
+  "sampleSize": 25,
+  "autoSampleConditions": [
+    "1%"
+  ],
+  "timeout": 30,
+  "root": "../../../..",
+  "benchmarks": [
+    {
+      "browser": {
+        "name": "chrome",
+        "headless": true
+      },
+      "measurement": {
+        "mode": "performance",
+        "entryName": "total"
+      },
+      "expand": [
+        {
+          "url": "./shadow-dom.html",
+          "name": "Shadow DOM styles with style tags"
+        },
+        {
+          "url": "./shadow-dom-link.html",
+          "name": "Shadow DOM styles with link tags"
+        }
+      ]
+    }
+  ]
+}
