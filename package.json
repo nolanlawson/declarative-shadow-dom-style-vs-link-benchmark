@@ -1,14 +1,9 @@
 {
   "name": "declarative-shadow-dom-style-benchmark",
   "version": "1.0.0",
-  "description": "This is a browser benchmark of loading 100 declarative shadow roots, each containing `<link rel=stylesheet>`s for Bootstrap.css, plus some HTML markup, versus roughly the same thing using `<link>`s in the `<head>` and light DOM.",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tach --config tachometer.json"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "tachometer": "^0.7.1"
   }
