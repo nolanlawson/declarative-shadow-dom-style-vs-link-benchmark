@@ -19,11 +19,11 @@
       "expand": [
         {
           "url": "./shadow-dom.html",
-          "name": "Shadow DOM styles with style tags"
+          "name": "<style>"
         },
         {
           "url": "./shadow-dom-link.html",
-          "name": "Shadow DOM styles with link tags"
+          "name": "<link>"
         }
       ]
     }

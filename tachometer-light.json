@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Polymer/tachometer/master/config.schema.json",
+  "sampleSize": 10,
+  "autoSampleConditions": [
+    "1%"
+  ],
+  "timeout": 30,
+  "root": "../../../..",
+  "benchmarks": [
+    {
+      "browser": {
+        "name": "chrome",
+        "headless": true
+      },
+      "measurement": {
+        "mode": "performance",
+        "entryName": "total"
+      },
+      "expand": [
+        {
+          "url": "./light-dom.html",
+          "name": "<style>"
+        },
+        {
+          "url": "./light-dom-link.html",
+          "name": "<link>"
+        },
+        {
+          "url": "./light-dom-style-hoisted.html",
+          "name": "hoisted <style>"
+        },
+        {
+          "url": "./light-dom-link-hoisted.html",
+          "name": "hoisted <link>"
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,8 @@
   "name": "declarative-shadow-dom-style-benchmark",
   "version": "1.0.0",
   "scripts": {
-    "test": "tach --config tachometer.json"
+    "test": "tach --config tachometer.json",
+    "test:light": "tach --config tachometer-light.json"
   },
   "dependencies": {
     "tachometer": "^0.7.1"

@@ -6,8 +6,11 @@ This is a browser benchmark of loading 100 declarative shadow roots, each contai
 
     npm i
     npm test
+    npm run test:light # light dom tests
 
 ## Results
+
+### Shadow DOM
 
 Chrome:
 
@@ -83,3 +86,6 @@ Safari:
 │                                   │              │                       │                 969.11ms - 1050.81ms │                                     │
 └───────────────────────────────────┴──────────────┴───────────────────────┴──────────────────────────────────────┴─────────────────────────────────────┘
 ```
+
+### Light DOM
+
