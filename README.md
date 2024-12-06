@@ -2,6 +2,8 @@
 
 This is a browser benchmark of loading 100 declarative shadow roots, each containing `<link rel=stylesheet>`s for Bootstrap.css, plus some HTML markup, versus roughly the same thing using `<style>`s rather than `<link>`s.
 
+There's also a light DOM flavor that compares the same thing, but without any declarative shadow roots, and optionally hoisting duplicated `<style>`s into a single `<style>` or `<link>` in the `<head>`.
+
 ## Usage
 
     npm i
