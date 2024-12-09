@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "test": "tach --config tachometer.json",
-    "test:light": "tach --config tachometer-light.json"
+    "test:light": "tach --config tachometer-light.json",
+    "test:hoist": "tach --config tachometer-hoist.json",
+    "test:parse": "tach --config tachometer-parse.json"
   },
   "dependencies": {
     "tachometer": "^0.7.1"
