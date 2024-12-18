@@ -5,11 +5,11 @@
     "1%"
   ],
   "timeout": 30,
-  "root": "../../../..",
   "benchmarks": [
     {
       "browser": {
-        "name": "safari"
+        "name": "chrome",
+        "headless": true
       },
       "measurement": {
         "mode": "performance",
@@ -17,19 +17,19 @@
       },
       "expand": [
         {
-          "url": "./light-dom.html",
+          "url": "http://localhost:3000?mode=light&hoist=false&strategy=style",
           "name": "<style>"
         },
         {
-          "url": "./light-dom-link.html",
+          "url": "http://localhost:3000?mode=light&hoist=false&strategy=link",
           "name": "<link>"
         },
         {
-          "url": "./light-dom-style-hoisted.html",
+          "url": "http://localhost:3000?mode=light&hoist=true&strategy=style",
           "name": "hoisted <style>"
         },
         {
-          "url": "./light-dom-link-hoisted.html",
+          "url": "http://localhost:3000?mode=light&hoist=true&strategy=link",
           "name": "hoisted <link>"
         }
       ]

@@ -5,16 +5,18 @@ This is a browser benchmark of loading 100 declarative shadow roots, each contai
 There's also a few other flavors:
 
 * light DOM that compares the same thing, but without any declarative shadow roots, and optionally hoisting duplicated `<style>`s into a single `<style>` or `<link>` in the `<head>`.
-* Shadow DOM that compares against using JavaScript to copy into shadowRoots stylesheets constructed from a single set of styles, and another that also copies in a single set of DOM.
-* Comparing pure parsing cost against cloning elements with shadowRoots against setHTMLUnsafe with DSD.
+* The above, but using the strategy of inline JavaScript or inline web components to copy styles into `adoptedStyleSheets`.
 
 ## Usage
 
     npm i
+
+    # start the server in a separate console
+    npm start
+
+    # now run:
     npm test
     npm run test:light # light dom tests
-    npm run test:hoist # hoisting shadowdom tests
-    npm run test:parse # timing after parsing, shadowdom tests
 
 ## Results
 

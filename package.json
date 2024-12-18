@@ -1,13 +1,20 @@
 {
   "name": "declarative-shadow-dom-style-benchmark",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
+    "start": "node server.js",
     "test": "tach --config tachometer.json",
     "test:light": "tach --config tachometer-light.json",
     "test:hoist": "tach --config tachometer-hoist.json",
     "test:parse": "tach --config tachometer-parse.json"
   },
   "dependencies": {
+    "express": "^4.21.2",
     "tachometer": "^0.7.1"
+  },
+  "volta": {
+    "node": "22.12.0",
+    "npm": "10.9.2"
   }
 }

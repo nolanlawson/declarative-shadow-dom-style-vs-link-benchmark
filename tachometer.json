@@ -5,7 +5,6 @@
     "1%"
   ],
   "timeout": 30,
-  "root": "../../../..",
   "benchmarks": [
     {
       "browser": {
@@ -18,12 +17,12 @@
       },
       "expand": [
         {
-          "url": "./shadow-dom.html",
+          "url": "http://localhost:3000?mode=shadow&hoist=false&strategy=style",
           "name": "<style>"
         },
         {
-          "url": "./shadow-dom-link.html",
-          "name": "<link>"
+          "url": "http://localhost:3000?mode=shadow&hoist=false&strategy=link",
+          "name": "<style>"
         }
       ]
     }

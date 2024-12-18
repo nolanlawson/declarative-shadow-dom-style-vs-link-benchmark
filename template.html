@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <title>Benchmark</title>
+    __HEAD__
+</head>
+<body>
+__BODY__
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    await new Promise(requestAnimationFrame)
+    await new Promise(setTimeout)
+    performance.mark('end')
+
+    // measure starting from TTFB so we don't measure the time the server took to generate the HTML
+    new PerformanceObserver((entryList) => {
+      const [pageNav] = entryList.getEntriesByType('navigation');
+      const ttfb = pageNav.responseStart
+      performance.measure('total', {start: ttfb, end: 'end'})
+    }).observe({type: 'navigation', buffered: true});
+  })
+</script>
+</body>
+</html>
