@@ -22,7 +22,11 @@
         },
         {
           "url": "http://localhost:3000?mode=shadow&hoist=false&strategy=link",
-          "name": "<style>"
+          "name": "<link>"
+        },
+        {
+          "url": "http://localhost:3000?mode=shadow&hoist=false&strategy=component",
+          "name": "component"
         }
       ]
     }
