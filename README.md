@@ -1,11 +1,14 @@
 # declarative-shadow-dom-style-vs-link-benchmark
 
-This is a browser benchmark of loading 100 declarative shadow roots, each containing `<link rel=stylesheet>`s for Bootstrap.css, plus some HTML markup, versus roughly the same thing using `<style>`s rather than `<link>`s.
+This is a browser benchmark of loading 100 declarative shadow roots, each containing `<link rel=stylesheet>`s for
+Bootstrap.css, plus some HTML markup, versus roughly the same thing using `<style>`s rather than `<link>`s.
 
 There's also a few other flavors:
 
-* light DOM that compares the same thing, but without any declarative shadow roots, and optionally hoisting duplicated `<style>`s into a single `<style>` or `<link>` in the `<head>`.
-* The above, but using the strategy of inline JavaScript or inline web components to copy styles into `adoptedStyleSheets`.
+* light DOM that compares the same thing, but without any declarative shadow roots, and optionally hoisting duplicated
+  `<style>`s into a single `<style>` or `<link>` in the `<head>`.
+* The above, but using the strategy of inline JavaScript or inline web components to copy styles into
+  `adoptedStyleSheets`.
 
 ## Usage
 
@@ -29,47 +32,57 @@ Chrome:
 │     Version │ <none>          │
 ├─────────────┼─────────────────┤
 │     Browser │ chrome-headless │
-│             │ 131.0.0.0       │
 ├─────────────┼─────────────────┤
 │ Sample size │ 25              │
+├─────────────┼─────────────────┤
+│       Bytes │ 0.00 KiB        │
 └─────────────┴─────────────────┘
 
-┌───────────────────────────────────┬──────────────┬───────────────────────┬──────────────────────────────────────┬─────────────────────────────────────┐
-│ Benchmark                         │ Bytes        │              Avg time │ vs Shadow DOM styles with style tags │ vs Shadow DOM styles with link tags │
-├───────────────────────────────────┼──────────────┼───────────────────────┼──────────────────────────────────────┼─────────────────────────────────────┤
-│ Shadow DOM styles with style tags │ 92234.85 KiB │ 3136.38ms - 3502.15ms │                                      │                              slower │
-│                                   │              │                       │                             -        │                         188% - 227% │
-│                                   │              │                       │                                      │               2054.17ms - 2426.71ms │
-├───────────────────────────────────┼──────────────┼───────────────────────┼──────────────────────────────────────┼─────────────────────────────────────┤
-│ Shadow DOM styles with link tags  │ 1249.08 KiB  │ 1043.48ms - 1114.17ms │                               faster │                                     │
-│                                   │              │                       │                            65% - 70% │                            -        │
-│                                   │              │                       │                2054.17ms - 2426.71ms │                                     │
-└───────────────────────────────────┴──────────────┴───────────────────────┴──────────────────────────────────────┴─────────────────────────────────────┘
+┌───────────┬───────────────────────┬───────────────────────┬───────────────────────┬───────────────────────┐
+│ Benchmark │              Avg time │            vs <style> │             vs <link> │          vs component │
+├───────────┼───────────────────────┼───────────────────────┼───────────────────────┼───────────────────────┤
+│ <style>   │ 2195.79ms - 2223.17ms │                       │                slower │                slower │
+│           │                       │              -        │           178% - 183% │         1278% - 1424% │
+│           │                       │                       │ 1406.69ms - 1437.13ms │ 2041.54ms - 2072.84ms │
+├───────────┼───────────────────────┼───────────────────────┼───────────────────────┼───────────────────────┤
+│ <link>    │   780.91ms - 794.22ms │                faster │                       │                slower │
+│           │                       │             64% - 65% │              -        │           391% - 443% │
+│           │                       │ 1406.69ms - 1437.13ms │                       │   625.19ms - 645.36ms │
+├───────────┼───────────────────────┼───────────────────────┼───────────────────────┼───────────────────────┤
+│ component │   144.71ms - 159.87ms │                faster │                faster │                       │
+│           │                       │             93% - 93% │             80% - 82% │              -        │
+│           │                       │ 2041.54ms - 2072.84ms │   625.19ms - 645.36ms │                       │
+└───────────┴───────────────────────┴───────────────────────┴───────────────────────┴───────────────────────┘
 ```
 
-Firefox: 
+Firefox:
 
 ```
 ┌─────────────┬──────────────────┐
 │     Version │ <none>           │
 ├─────────────┼──────────────────┤
 │     Browser │ firefox-headless │
-│             │ 132.0            │
 ├─────────────┼──────────────────┤
 │ Sample size │ 25               │
+├─────────────┼──────────────────┤
+│       Bytes │ 0.00 KiB         │
 └─────────────┴──────────────────┘
 
-┌───────────────────────────────────┬──────────────┬───────────────────────┬──────────────────────────────────────┬─────────────────────────────────────┐
-│ Benchmark                         │ Bytes        │              Avg time │ vs Shadow DOM styles with style tags │ vs Shadow DOM styles with link tags │
-├───────────────────────────────────┼──────────────┼───────────────────────┼──────────────────────────────────────┼─────────────────────────────────────┤
-│ Shadow DOM styles with style tags │ 92234.85 KiB │ 1293.05ms - 1393.19ms │                                      │                              slower │
-│                                   │              │                       │                             -        │                         331% - 427% │
-│                                   │              │                       │                                      │               1006.16ms - 1119.20ms │
-├───────────────────────────────────┼──────────────┼───────────────────────┼──────────────────────────────────────┼─────────────────────────────────────┤
-│ Shadow DOM styles with link tags  │ 1249.08 KiB  │   254.22ms - 306.66ms │                               faster │                                     │
-│                                   │              │                       │                            77% - 81% │                            -        │
-│                                   │              │                       │                1006.16ms - 1119.20ms │                                     │
-└───────────────────────────────────┴──────────────┴───────────────────────┴──────────────────────────────────────┴─────────────────────────────────────┘
+┌───────────┬─────────────────────┬─────────────────────┬─────────────────────┬─────────────────────┐
+│ Benchmark │            Avg time │          vs <style> │           vs <link> │        vs component │
+├───────────┼─────────────────────┼─────────────────────┼─────────────────────┼─────────────────────┤
+│ <style>   │ 827.48ms - 912.84ms │                     │              slower │              slower │
+│           │                     │            -        │         227% - 342% │         417% - 484% │
+│           │                     │                     │ 590.42ms - 697.18ms │ 669.10ms - 755.22ms │
+├───────────┼─────────────────────┼─────────────────────┼─────────────────────┼─────────────────────┤
+│ <link>    │ 194.30ms - 258.42ms │              faster │                     │              slower │
+│           │                     │           70% - 78% │            -        │           22% - 64% │
+│           │                     │ 590.42ms - 697.18ms │                     │  35.80ms - 100.92ms │
+├───────────┼─────────────────────┼─────────────────────┼─────────────────────┼─────────────────────┤
+│ component │ 152.29ms - 163.71ms │              faster │              faster │                     │
+│           │                     │           81% - 83% │           20% - 40% │            -        │
+│           │                     │ 669.10ms - 755.22ms │  35.80ms - 100.92ms │                     │
+└───────────┴─────────────────────┴─────────────────────┴─────────────────────┴─────────────────────┘
 ```
 
 Safari:
@@ -135,11 +148,11 @@ Chrome:
 Firefox:
 
 ```
-┌─────────────┬──────────────────┐                                                                                                                                                                                                                                        
-│     Version │ <none>           │                                                                                                                                                                                                                                        
-├─────────────┼──────────────────┤                                                                                                                                                                                                                                        
+┌─────────────┬──────────────────┐
+│     Version │ <none>           │
+├─────────────┼──────────────────┤
 │     Browser │ firefox-headless │
-│             │ 132.0            │                                                                                                   
+│             │ 132.0            │
 ├─────────────┼──────────────────┤
 │ Sample size │ 10               │
 └─────────────┴──────────────────┘
